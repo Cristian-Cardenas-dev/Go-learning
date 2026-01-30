@@ -1,7 +1,6 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 )
 
@@ -10,27 +9,25 @@ func main() {
 
 }
 
-func validateUser() (bool, error) {
+func validateUser() {
 	type User struct {
 		Name string
 		Age  int
 	}
-	user := User{Name: "Alice"}
-	fmt.Println("User:", user, "Age address:", &user.Age)
-	if _, err := validateAgeUser(&user.Age); err != nil {
-		fmt.Println("Error:", err)
-		return false, err
-	}
-	return true, nil
+	user := User{Name: "Alice", Age: 20}
+	fmt.Println("User:", user)
+	updateAgeWithPointer(&user.Age)
+	// The age in user struct is updated
+	fmt.Println("User:", user)
+	updateAgeWithoutPointer(user.Age)
+	// The age in user struct remains unchanged
+	fmt.Println("User:", user)
 }
-func validateAgeUser(age *int) (bool, error) {
-	if age == nil {
-		return false, errors.New("age is invalid")
-	}
-	if *age < 18 {
-		return false, errors.New("user is underage")
-	}
-	return true, nil
+func updateAgeWithPointer(age *int) {
+	*age = 25
+	fmt.Println("New Age:", *age)
 }
-
-
+func updateAgeWithoutPointer(age int) {
+	age = 100
+	fmt.Println("New Age:", age)
+}
