@@ -8,7 +8,8 @@ func main() {
 	//arrays()
 	//slices()
 	//capacity()
-	makeSlices()
+	//makeSlices()
+	makeMaps()
 }
 
 func arrays() {
@@ -42,4 +43,31 @@ func makeSlices() {
 	x := make([]int, 0, 10)
 	x = append(x, 5, 6, 7, 8)
 	fmt.Println(x, len(x), cap(x))
+	a := []int{1, 2, 3, 4}
+	y := a[:2]
+	z := a[1:]
+	z[0] = 100
+	fmt.Println("a:", a)
+	fmt.Println("y:", y)
+	fmt.Println("z:", z)
+}
+func makeMaps() {
+	m := make(map[string]int)
+	m["one"] = 1
+	m["two"] = 2
+	fmt.Println("Map:", m)
+	delete(m, "one")
+	fmt.Println("Map after deletion:", m)
+	mint := map[string]int{
+		"a": 0,
+	}
+
+	v := m["a"]
+	v2 := mint["b"]
+	fmt.Println(v, v2)
+	if val, ok := mint["b"]; ok {
+		fmt.Println("Key 'b' found with value:", val)
+	} else {
+		fmt.Println("Key 'b' not found")
+	}
 }
