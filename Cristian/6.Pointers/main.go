@@ -6,7 +6,6 @@ import (
 
 func main() {
 	validateUser()
-
 }
 
 func validateUser() {
