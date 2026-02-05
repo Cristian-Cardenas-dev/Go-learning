@@ -26,6 +26,7 @@ func main() {
 	fmt.Println("Zero values:", sinValor, textoVacio, sinBooleano)
 
 	// Go NO convierte automaticamente, entre valores de tipo nunmericos
+	// Go no realiza conversiones numéricas implícitas entre tipos distintos
 	var entero int = 42
 	var flotante float64 = float64(entero)
 	fmt.Println("Conversion:", entero, "->", flotante)
